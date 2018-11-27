@@ -44,7 +44,7 @@ int main()
 		a[i]=L.r[i].key;
 	}
 	double _begin_time = clock();
-	ShellSort(L,a,n);
+	ShellSort(L,a,100);
 	long _end_time = clock();
 	printf("------------time = %lf ms.------------------------\n", _end_time - _begin_time);
 	for(int i=1;i<=n;i++)
