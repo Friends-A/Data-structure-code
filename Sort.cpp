@@ -97,7 +97,7 @@ int main()
 	printf("------------BInsertSort time = %lf ms.------------------------\n", _end_time2 - _begin_time2);
 
 	double _begin_time3 = clock();
-	ShellSort(L3,a,n);
+	ShellSort(L3,a,100);
 	long _end_time3 = clock();
 	printf("------------ShellSort time = %lf ms.------------------------\n", _end_time3 - _begin_time3);
 	for(int i=1;i<=n;i++)
