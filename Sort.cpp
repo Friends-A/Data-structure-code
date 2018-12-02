@@ -24,7 +24,7 @@ inline void get_dt(int n)
 	}
 }
 // 希尔排序
-void ShellInsert(Sqlist &L,int dk)
+inline ShellInsert(Sqlist &L,int dk)
 {
 	int i,j;
 	for(i=dk+1;i<=L.len;++i)
@@ -36,14 +36,14 @@ void ShellInsert(Sqlist &L,int dk)
 			L.r[j+dk]=L.r[0];
 		}
 }
-void ShellSort(Sqlist &L,int dt[],int t)
+inline ShellSort(Sqlist &L,int dt[],int t)
 {
 	int k,dk;
 	for(k=0;k<t;++k)
 		ShellInsert(L,dt[k]);	 
 }
 // 折半插入
-void Binsertsort(Sqlist &L)
+inline Binsertsort(Sqlist &L)
 {
 	int low,high,m;
 	for(int i=2;i<=L.len;i++)
@@ -64,7 +64,7 @@ void Binsertsort(Sqlist &L)
 		L.r[high+1]=L.r[0];
 	}
 }
-void insertsort(Sqlist &L)
+inline insertsort(Sqlist &L)
 {
 	int j;
 	for(int i=2;i<=L.len;i++)
