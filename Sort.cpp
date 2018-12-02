@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
 const int maxn=1e6+10;
 int a[maxn];
@@ -11,6 +12,17 @@ typedef struct
 	RedType *r;
 	int len;
 }Sqlist;
+int dt[100];
+int n,k;
+inline void get_dt(int n)
+{
+	k=0;
+	while(n)
+	{
+		dt[k++]=n/2;
+		n/=2;
+	}
+}
 // 希尔排序
 void ShellInsert(Sqlist &L,int dk)
 {
@@ -67,14 +79,14 @@ void insertsort(Sqlist &L)
 }
 int main()
 {
-	freopen("in1.txt","r",stdin);
+	freopen("in.txt","r",stdin);
 	freopen("Sort.txt","w",stdout);
 	Sqlist L1,L2,L3;
 	L1.r=new RedType[maxn];
 	L2.r=new RedType[maxn];
 	L3.r=new RedType[maxn];
-	int n;
 	scanf("%d",&n);
+	get_dt(n);
 	L1.len=n;
 	L2.len=n;
 	L3.len=n;
@@ -84,24 +96,21 @@ int main()
 		L1.r[i].key=a[i];
 		L2.r[i].key=a[i];
 		L3.r[i].key=a[i];
-		// scanf("%d",&L.r[i].key);
 	}
 	double _begin_time1 = clock();
 	insertsort(L1);
 	long _end_time1 = clock();
 	printf("------------InsertSort time = %lf ms.------------------------\n", _end_time1 - _begin_time1);
-
 	double _begin_time2 = clock();
 	Binsertsort(L2);
 	long _end_time2 = clock();
 	printf("------------BInsertSort time = %lf ms.------------------------\n", _end_time2 - _begin_time2);
-
 	double _begin_time3 = clock();
-	ShellSort(L3,a,100);
+	ShellSort(L3,dt,k);
 	long _end_time3 = clock();
 	printf("------------ShellSort time = %lf ms.------------------------\n", _end_time3 - _begin_time3);
 	for(int i=1;i<=n;i++)
-		printf("%d ",L1.r[i].key);
+		printf("%d ",L3.r[i].key);
 	printf("\n");
 	return 0;
 }
