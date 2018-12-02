@@ -11,7 +11,18 @@ typedef struct
 	RedType *r;
 	int len;
 }Sqlist;
-void ShellInsert(Sqlist &L,int dk)
+int dt[100];
+int n,k;
+inline void get_dt(int n)
+{
+	k=0;
+	while(n)
+	{
+		dt[k++]=n/2;
+		n/=2;
+	}
+}
+inline void ShellInsert(Sqlist &L,int dk)
 {
 	int i,j;
 	for(i=dk+1;i<=L.len;++i)
@@ -23,7 +34,7 @@ void ShellInsert(Sqlist &L,int dk)
 			L.r[j+dk]=L.r[0];
 		}
 }
-void ShellSort(Sqlist &L,int dt[],int t)
+inline ShellSort(Sqlist &L,int dt[],int t)
 {
 	int k,dk;
 	for(k=0;k<t;++k)
@@ -31,12 +42,12 @@ void ShellSort(Sqlist &L,int dt[],int t)
 }
 int main()
 {
-	freopen("in1.txt","r",stdin);
+	freopen("in.txt","r",stdin);
 	freopen("1Shell.txt","w",stdout);
 	Sqlist L;
 	L.r=new RedType[maxn];
-	int n;
 	scanf("%d",&n);
+	get_dt(n);
 	L.len=n;
 	for(int i=1;i<=n;i++)
 	{
@@ -44,7 +55,7 @@ int main()
 		a[i]=L.r[i].key;
 	}
 	double _begin_time = clock();
-	ShellSort(L,a,100);
+	ShellSort(L,dt,k);
 	long _end_time = clock();
 	printf("------------time = %lf ms.------------------------\n", _end_time - _begin_time);
 	for(int i=1;i<=n;i++)
